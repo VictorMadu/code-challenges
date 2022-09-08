@@ -1,0 +1,48 @@
+Three conditions of exp
+
+1. When exp = 0
+2. When exp is {x: x > 0; x is a member of the set of natural numbers}
+3. When exp is {x: x < 0; x is a member of the set of natural numbers}
+
+The examples
+
+1 => 1.23451678E+0
+2 => 1.23451678E+3
+3 => 1.23451678E+8
+4 => 1.23451678E+10
+5 => 1.23451678E-8
+6 => 1.23451678E-9
+7 => 100E-9
+7 => 100E9
+7 => 1E-9
+7 => 1E9
+
+
+Definition of terms:
+
+1. digit: The numbers before the decimal point
+2. decimal: The numbers after the decimal point
+3. exponent: Given E+20 or e20 or e+20, we call 20 the exponent
+
+Walking through the solutions for each ef equal to example 
+
+1.0 Find the decimal point and seperate extract the digit, decimal and exponent. decimal default should be '' and exponent 0
+2. if exponent matches COND 1 or the length of the decimal same as the value of the exponent, 
+    2.1 join the digit and decimal but seperated by the decimal point and return
+3. else if exponent matches COND 2
+    3.1 if the length of the str decimal is less than the exponent, 
+        3.1.1 padEnd the decimal with zeros till its length matches the value of the exponent
+        3.1.2 join the digit and decimal but seperated by the decimal point and return
+    3.2 if otherwise (MEANING: exponent is less than the length of the str)
+        DEF: 
+            1. l: string 
+            2. r: string
+            3. temp: string
+            4. head = '0.'
+        3.2.1 we split the decimal into two, where l = length of the left side is the same with the value of the exponent and r = the remainng part of the deciaml 
+        3.2.2 temp = join the l and r but seperated by the decimal point 
+        3.3.3 join the digit and temp but seperated by the decimal point and return
+4. otherwise (MEANING: exponent matches COND 3)
+    4.1 DEF e_len = exponent * -1 (MEANING: e_ is an absolute value of exponent)
+    4.2 temp, pad the left end of the digit until its length is the same as e_len
+    4.3 join head, temp, decimals and return
